@@ -56,7 +56,7 @@ const Index = () => {
             <img
               src={product.image}
               alt={product.name}
-              className="mx-auto object-cover w-full h-[200px] cursor-pointer hover:opacity-75 transition-opacity"
+              className="mx-auto object-cover w-full h-[200px] cursor-pointer hover:opacity-75 transition-opacity duration-200 ease-in-out"
               onClick={() => selectImage(product)}
             />
             <p className="mt-2">Precio: <span className="text-lg font-bold">S/. {product.internetPrice}</span></p>
@@ -66,19 +66,19 @@ const Index = () => {
 
       {selectedProduct && (
         <Dialog open={!!selectedProduct} onOpenChange={closeModal}>
-          <DialogContent className="bg-white rounded-lg shadow-lg p-6 max-w-3xl mx-auto">
+          <DialogContent className="bg-white rounded-lg shadow-lg p-6 max-w-3xl mx-auto transform transition-transform duration-300 ease-in-out">
             <DialogHeader>
-              <DialogTitle id="product-name" className="text-2xl font-bold">{selectedProduct.name}</DialogTitle>
-              <DialogDescription id="product-sku" className="text-sm text-gray-500">SKU: {selectedProduct.sku}</DialogDescription>
+              <DialogTitle id="product-name" className="text-2xl font-bold mb-2">{selectedProduct.name}</DialogTitle>
+            <DialogDescription id="product-sku" className="text-sm text-gray-500 mb-4">SKU: {selectedProduct.sku}</DialogDescription>
             </DialogHeader>
-            <div id="product-details" className="mt-4">
-              <p id="internet-price" className="text-lg">Internet: S/ {selectedProduct.internetPrice.toFixed(2)}</p>
-              <p id="discount" className="text-red-500">- {selectedProduct.discountPercent}%</p>
-              <p id="product-description" className="mt-2">Descripción del {selectedProduct.name}</p>
-              <p className="mt-2">Precio Original: S/ <span id="product-price" className="line-through">{(selectedProduct.internetPrice / (1 - selectedProduct.discountPercent / 100)).toFixed(2)}</span></p>
-              <p className="mt-2">Precio con Descuento: S/ <span id="discount-price" className="font-bold">{selectedProduct.internetPrice.toFixed(2)}</span></p>
+            <div id="product-details" className="mt-4 space-y-2">
+              <p id="internet-price" className="text-lg font-semibold">Internet: S/ {selectedProduct.internetPrice.toFixed(2)}</p>
+              <p id="discount" className="text-red-500 font-semibold">- {selectedProduct.discountPercent}%</p>
+              <p id="product-description" className="mt-2 text-gray-700">Descripción del {selectedProduct.name}</p>
+              <p className="mt-2">Precio Original: S/ <span id="product-price" className="line-through text-gray-500">{(selectedProduct.internetPrice / (1 - selectedProduct.discountPercent / 100)).toFixed(2)}</span></p>
+              <p className="mt-2">Precio con Descuento: S/ <span id="discount-price" className="font-bold text-green-600">{selectedProduct.internetPrice.toFixed(2)}</span></p>
             </div>
-            <Button onClick={closeModal} className="mt-4 hover:bg-gray-200 transition-colors">Close</Button>
+            <Button onClick={closeModal} className="mt-4 hover:bg-gray-300 transition-colors duration-200 ease-in-out">Close</Button>
           </DialogContent>
         </Dialog>
       )}
