@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <main className="flex flex-col min-h-[25vh] p-4 overflow-auto items-center justify-center">
+    <main className="flex flex-col min-h-[12.5vh] p-4 overflow-auto items-center justify-center">
       <Outlet />
     </main>
   );
