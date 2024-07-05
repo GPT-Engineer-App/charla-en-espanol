@@ -56,29 +56,29 @@ const Index = () => {
             <img
               src={product.image}
               alt={product.name}
-              className="mx-auto object-cover w-full h-[200px] cursor-pointer"
+              className="mx-auto object-cover w-full h-[200px] cursor-pointer hover:opacity-75 transition-opacity"
               onClick={() => selectImage(product)}
             />
-            <p>Precio: <span className="tamaño">S/. {product.internetPrice}</span></p>
+            <p className="mt-2">Precio: <span className="text-lg font-bold">S/. {product.internetPrice}</span></p>
           </div>
         ))}
       </div>
 
       {selectedProduct && (
         <Dialog open={!!selectedProduct} onOpenChange={closeModal}>
-          <DialogContent>
+          <DialogContent className="bg-white rounded-lg shadow-lg p-6 max-w-3xl mx-auto">
             <DialogHeader>
-              <DialogTitle id="product-name">{selectedProduct.name}</DialogTitle>
-              <DialogDescription id="product-sku">SKU: {selectedProduct.sku}</DialogDescription>
+              <DialogTitle id="product-name" className="text-2xl font-bold">{selectedProduct.name}</DialogTitle>
+              <DialogDescription id="product-sku" className="text-sm text-gray-500">SKU: {selectedProduct.sku}</DialogDescription>
             </DialogHeader>
-            <div id="product-details">
-              <p id="internet-price">Internet: S/ {selectedProduct.internetPrice.toFixed(2)}</p>
-              <p id="discount">- {selectedProduct.discountPercent}%</p>
-              <p id="product-description">Descripción del {selectedProduct.name}</p>
-              <p>Precio Original: S/ <span id="product-price">{(selectedProduct.internetPrice / (1 - selectedProduct.discountPercent / 100)).toFixed(2)}</span></p>
-              <p>Precio con Descuento: S/ <span id="discount-price">{selectedProduct.internetPrice.toFixed(2)}</span></p>
+            <div id="product-details" className="mt-4">
+              <p id="internet-price" className="text-lg">Internet: S/ {selectedProduct.internetPrice.toFixed(2)}</p>
+              <p id="discount" className="text-red-500">- {selectedProduct.discountPercent}%</p>
+              <p id="product-description" className="mt-2">Descripción del {selectedProduct.name}</p>
+              <p className="mt-2">Precio Original: S/ <span id="product-price" className="line-through">{(selectedProduct.internetPrice / (1 - selectedProduct.discountPercent / 100)).toFixed(2)}</span></p>
+              <p className="mt-2">Precio con Descuento: S/ <span id="discount-price" className="font-bold">{selectedProduct.internetPrice.toFixed(2)}</span></p>
             </div>
-            <Button onClick={closeModal} className="mt-4">Close</Button>
+            <Button onClick={closeModal} className="mt-4 hover:bg-gray-200 transition-colors">Close</Button>
           </DialogContent>
         </Dialog>
       )}
