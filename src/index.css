@@ -74,3 +74,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Add the following CSS to define the reduced-height class */
+.reduced-height {
+  height: 50vh; /* Reduce height by half */
+}
